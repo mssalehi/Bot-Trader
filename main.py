@@ -159,7 +159,7 @@ def on_message(ws , message):
                         duration = gp.CalculateDuration(long_lastOpenTime , df_h['open_time'][-1:].values[0])
                         long_log.loc[long_lastIndex] = [long_lastOpenTime , long_lastOpenPrice , df_h['close'][-1:].values[0] , df_h['open_time'][-1:].values[0] , profit , duration , long_lastDemandPrice1 , long_lastDemandPrice2 , long_lastDemandTime , long_lastStopLoss ,'GetTrend!']
                         LongPosNum = LongPosNum + 1
-                        long_log.to_csv('LongPositions.csv')
+                        long_log.to_csv('BTCLongPositions.csv')
                         LongOpenPos = False
                         long_lastIndex+=1
                         bh.sendMessage(f"Long Position has closed at {df_h['open_time'][-1:].values[0]}\n reason : Get Trend")
@@ -175,7 +175,7 @@ def on_message(ws , message):
                         long_log.loc[long_lastIndex] = [long_lastOpenTime , long_lastOpenPrice , long_sl , df_h['open_time'][-1:].values[0] , profit , duration , long_lastDemandPrice1 , long_lastDemandPrice2 , long_lastDemandTime , long_lastStopLoss , 'StopLoss!']
                         LongOpenPos = False
                         LongPosNum = LongPosNum + 1
-                        long_log.to_csv('LongPositions.csv')
+                        long_log.to_csv('BTCLongPositions.csv')
                         LongEntryPoints.pop(Lcounter)
                         LongExitPoints.pop(Lcounter)
                         LongStopLoss.pop(Lcounter)
@@ -192,7 +192,7 @@ def on_message(ws , message):
                         LongTotalFund = LongTotalFund + ((profit * LongTotalFund) / 100)
                         long_log.loc[long_lastIndex] = [long_lastOpenTime , long_lastOpenPrice , long_tp , df_h['open_time'][-1:].values[0] , profit , duration , long_lastDemandPrice1 , long_lastDemandPrice2 , long_lastDemandTime , long_lastStopLoss , 'TakeProfit!']
                         LongPosNum = LongPosNum + 1
-                        long_log.to_csv('LongPositions.csv')
+                        long_log.to_csv('BTCLongPositions.csv')
                         LongOpenPos = False
                         long_lastIndex +=1
                         bh.sendMessage(f"Long Position has closed at {df_h['open_time'][-1:].values[0]}\n reason : Take Profit")
@@ -246,7 +246,7 @@ def on_message(ws , message):
                         ShortTotalFund = ShortTotalFund + ((profit * ShortTotalFund) / 100)
                         short_log.loc[short_lastIndex] = [short_lastOpenTime , short_lastOpenPrice , df_h['close'][-1:].values[0] , df_h['open_time'][-1:].values[0] , profit , duration , short_lastSupplyPrice1 , short_lastSupplyPrice2 , short_lastSupplyTime , short_lastStopLoss , 'GetTrend']
                         ShPosNum = ShPosNum + 1
-                        short_log.to_csv('ShortPositions.csv')
+                        short_log.to_csv('BTCShortPositions.csv')
                         ShortOpenPos = False
                         short_lastIndex+=1
                         bh.sendMessage(f"Short Position has closed at {df_h['open_time'][-1:].values[0]}\n reason : Get Trend")
@@ -261,7 +261,7 @@ def on_message(ws , message):
                         short_log.loc[short_lastIndex] = [short_lastOpenTime , short_lastOpenPrice , short_sl , df_h['open_time'][-1:].values[0] , profit , duration , short_lastSupplyPrice1 , short_lastSupplyPrice2 , short_lastSupplyTime , short_lastStopLoss , 'StopLoss']
                         ShortOpenPos = False
                         ShPosNum = ShPosNum + 1
-                        short_log.to_csv('ShortPositions.csv')
+                        short_log.to_csv('BTCShortPositions.csv')
                         ShortEntryPoints.pop(Scounter)
                         ShortExitPoints.pop(Scounter)
                         ShortStopLoss.pop(Scounter)
@@ -277,7 +277,7 @@ def on_message(ws , message):
                         ShortTotalFund = ShortTotalFund + ((profit * ShortTotalFund) / 100)
                         short_log.loc[short_lastIndex] = [short_lastOpenTime , short_lastOpenPrice , short_tp , df_h['open_time'][-1:].values[0] , profit , duration , short_lastSupplyPrice1 , short_lastSupplyPrice2 , short_lastSupplyTime , short_lastStopLoss , 'TakeProfit']
                         ShPosNum = ShPosNum + 1
-                        short_log.to_csv('ShortPositions.csv')
+                        short_log.to_csv('BTCShortPositions.csv')
                         ShortOpenPos = False
                         short_lastIndex+=1
                         bh.sendMessage(f"Short Position has closed at {df_h['open_time'][-1:].values[0]}\n reason : Take Profit")
